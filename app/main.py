@@ -2,7 +2,7 @@ from app.core.exception_handler import app_exception_handler
 from fastapi import FastAPI
 from app.auth.router import router as auth_router
 from app.utils.exceptions import BaseAppException
-from app.core.database import create_indexes
+from app.core.database import init_db
 
 
 app = FastAPI(title="FastAPI JWT Auth")
@@ -15,4 +15,4 @@ app.include_router(auth_router)
 
 @app.on_event("startup")
 async def startup():
-    await create_indexes()
+    await init_db()

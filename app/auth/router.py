@@ -8,7 +8,7 @@ router = APIRouter(prefix="/auth", tags=["Auth"])
 
 @router.post("/register", status_code=201)
 async def register(payload: RegisterSchema):
-    await register_user(payload.email, payload.password)
+    await register_user(payload.email, payload.password, payload.name)
     return APIResponse.success(data=None, message="User registered")
 
 
